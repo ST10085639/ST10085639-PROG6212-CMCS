@@ -1,8 +1,76 @@
-﻿@{
+﻿@* Refernces:
+ *@
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        color: white;
+        background: linear-gradient(to bottom right, #004e92, #000428, #004e92);
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        flex-grow: 1;
+    }
+
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+        color: red;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin: 15px 0;
+        color: #555;
+    }
+
+    .btn {
+        background-color: red;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.1em;
+        display: inline-block;
+        margin: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .btn:hover {
+            background-color: #a10000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+<div class="card">
+    <h1>Contract Monthly Claim System</h1>
+    <p>Easy Claim Submissions & Management</p>
+    <p>Making claim status, tracking, & reviewing easy.</p>
+    <p>Contact Us: 065 569 7492</p>
+
+    <div>
+        <a href="/Authentication/SignUp" class="btn">Sign-Up</a>
+        <a href="/Authentication/Login" class="btn">Login</a>
+    </div>
 </div>
