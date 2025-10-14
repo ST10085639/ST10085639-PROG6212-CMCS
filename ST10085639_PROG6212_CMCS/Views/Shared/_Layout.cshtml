@@ -3,16 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ST10085639_PROG6212_CMCS</title>
+    <title>@ViewData["Title"] - Contract Monthly Claim System</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ST10085639_PROG6212_CMCS.styles.css" asp-append-version="true" />
+    <style>
+        /* Custom red logout button */
+        .logout-btn {
+            background-color: #dc3545; /* Red background */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            padding: 8px 15px; /* Padding for better button size */
+            border-radius: 5px; /* Rounded corners */
+            text-transform: uppercase; /* Uppercase text */
+            font-weight: bold; /* Bold text */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+        }
+
+            .logout-btn:hover {
+                background-color: #c82333; /* Darker red on hover */
+            }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ST10085639_PROG6212_CMCS</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Contract Monthly Claim System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,9 +41,19 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Claim" asp-action="Create">Submit Claims</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Claim" asp-action="LecturerHistory">Claim History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Claim" asp-action="AdminView">Admin Dashboard</a>
                         </li>
                     </ul>
+                    <!-- Right-aligned Logout button -->
+                    <form asp-area="" asp-controller="Authentication" asp-action="Logout" method="post" class="d-inline">
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -38,8 +66,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - ST10085639_PROG6212_CMCS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+            &copy; Created by Raeez Spence - 2025        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
