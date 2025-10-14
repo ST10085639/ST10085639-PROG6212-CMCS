@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ST10085639_PROG6212_CMCS.Models;
-using System.Security.Claims;
 
 namespace ST10085639_PROG6212_CMCS.Data
 {
