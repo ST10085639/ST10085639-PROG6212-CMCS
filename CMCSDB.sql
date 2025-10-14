@@ -1,0 +1,33 @@
+--Database
+CREATE DATABASE CMCSDB;
+GO
+
+USE CMCSDB;
+GO
+
+--Users Table
+CREATE TABLE [dbo].[Users] (
+	[ID] INT IDENTITY(100, 1) PRIMARY KEY,
+	[FirstName] NVARCHAR(100) NOT NULL,
+	[LastName] NVARCHAR(100) NOT NULL,
+	[Email] NVARCHAR(255) NOT NULL UNIQUE,
+	[Password] NVARCHAR(255) NOT NULL,
+	[ConfirmPassword] NVARCHAR(255) NOT NULL,
+	[Role] NVARCHAR(50) NOT NULL
+);
+GO
+
+--Claims Table
+CREATE TABLE [dbo]. [Claims] (
+	[ClaimID] INT IDENTITY(100, 1) PRIMARY KEY,
+	[LecturerName] NVARCHAR(200) NOT NULL,
+	[SubmittedDate] DATETIME2 NOT NULL DEFAULT GETDATE(),
+	[StartDate] DATETIME2 NOT NULL,
+	[EndDate] DATETIME2 NOT NULL,
+	[HoursWorked] INT NOT NULL,
+	[HourlyRate] DECIMAL(18, 2) NOT NULL,
+	[DocumentPath] NVARCHAR(500) NOT NULL,
+	[DocumentName] NVARCHAR(500) NOT NULL,
+	[Status] NVARCHAR(50) NOT NULL DEFAULT 'Pending'
+);
+GO
