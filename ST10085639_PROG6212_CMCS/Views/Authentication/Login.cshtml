@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@* References: *@
+
+@model ST10085639_PROG6212_CMCS.Models.User
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form asp-action="Login" method="post">
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" required />
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" id="loginPassword" required />
+        </div>
+
+        <div class="form-link">
+            <p>Don't have an acount? <a href="@Url.Action("SignUp")">Sign-Up here</a></p>
+        </div>
+    </form>
+</div>
