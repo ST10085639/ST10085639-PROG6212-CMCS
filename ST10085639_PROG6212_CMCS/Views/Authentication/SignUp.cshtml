@@ -1,5 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@* References: *@
+
+@model ST10085639_PROG6212_CMCS.Models.User
+
+<div class="signup-container">
+    <h2>Sign-Up</h2>
+
+    <form asp-action="SignUp" method="post">
+        <div>
+            <label>First Name</label>
+            <input asp-for="FirstName" type="text" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label>Last Name</label>
+            <input asp-for="LastName" type="text" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input asp-for="Email" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input asp-for="Password" type="password" id="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label>Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="text" id="confirmPassword" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label>Role</label>
+            <select asp-for="Role">
+                <option value="" disabled selected>Select a role</option>
+                <option value="Lecturer">Lecturer</option>
+                <option value="Programme Coordinator">Programme Coordinator</option>
+                <option value="Academic Manager">Academic Manager</option>
+            </select>
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="submit-style">Sign-Up</button>
+        </div>
+
+        <div class="form-link">
+            <p>Already have an account? <a href="@Url.Action("Login")Login here</a></p>
+        </div>
+    </form>
+</div>
