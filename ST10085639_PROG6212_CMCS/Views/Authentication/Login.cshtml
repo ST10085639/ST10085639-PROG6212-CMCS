@@ -5,7 +5,7 @@
 <style>
     body {
         margin: 0;
-        font: 'Helvetica Neue', Arial, san-serif;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
         color: white;
         background: linear-gradient(to bottom right, #004e92, #000428, #004e92);
         background-attachment: fixed;
@@ -24,38 +24,38 @@
         color: white;
     }
 
-    .login-container h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .login-container input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 5px;
-    }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
 
-    .login-container input[type="submit"] {
-        background-color: #007bff;
-        color: white;
-        cursor: pointer;
-        border: none;
-    }
+            .login-container input[type="submit"] {
+                background-color: #007bff;
+                color: white;
+                cursor: pointer;
+                border: none;
+            }
 
-    .login-container input[type="submit"]:hover {
-        background-color: #0056b3;
-    }
+                .login-container input[type="submit"]:hover {
+                    background-color: #0056b3;
+                }
 
-    .login-container a {
-        color: #007bff;
-        text-decoration: none;
-    }
+        .login-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
 
-    .login-container a:hover {
-        text-decoration: underline;
-    }
+            .login-container a:hover {
+                text-decoration: underline;
+            }
 
     .form-link {
         text-align: center;
@@ -75,7 +75,7 @@
         padding: 15px 30px;
         border: none;
         border-radius: 20px;
-        font-size: 12em;
+        font-size: 1.2em;
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
@@ -83,16 +83,16 @@
         transition: all 0.3s ease;
     }
 
-    .submit-style:hover {
-        background: #218838;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-        transform: translate(-3px);
-    }
+        .submit-style:hover {
+            background-color: #218838;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
 
-    .submit-style:active {
-        transform: translateY(0);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+        .submit-style:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
     .alert {
         background-color: #28a745;
@@ -109,10 +109,10 @@
         align-items: center;
     }
 
-    .password-container input[type="password"], .password-container input[type="text"] {
-        width: 100%;
-        padding-right: 30px;
-    }
+        .password-container input[type="password"], .password-container input[type="text"] {
+            width: 100%;
+            padding-right: 30px;
+        }
 
     .toggle-password {
         position: absolute;
@@ -146,7 +146,7 @@
         </div>
 
         <div class="form-link">
-            <p>Don't have an acount? <a href="@Url.Action("SignUp")">Sign-Up here</a></p>
+            <p>Don't have an account? <a href="@Url.Action("SignUp")">Sign-Up here</a></p>
         </div>
     </form>
 </div>
@@ -157,8 +157,6 @@
 }
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-
     <script>
         function togglePasswordVisibility(fieldId, icon) {
             var field = document.getElementById(fieldId);
