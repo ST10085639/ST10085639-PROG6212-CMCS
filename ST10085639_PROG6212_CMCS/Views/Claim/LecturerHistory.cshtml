@@ -1,5 +1,64 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@* References: *@
+
+@model List<ST10085639_PROG6212_CMCS.Models.Claim>
+
+<div class="table-container">
+    <h2>Claim History</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 80px;">Claim ID</th>
+                <th style="width: 200px;">Lecturer Name</th>
+                <th style="width: 120px;">Submitted Date</th>
+                <th style="width: 120px;">Start Date</th>
+                <th style="width: 120px;">End Date</th>
+                <th style="width: 120px;">Hours Worked</th>
+                <th style="width: 120px;">Hourly Rate (R/hr)</th>
+                <th style="width: 140px;">Total Amount (R)</th>
+                <th style="width: 260px; max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Document</th>
+                <th style="width: 120px;">Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@claim.ClaimID</td>
+                    <td>@claim.LecturerName</td>
+                    <td>@claim.SubmittedDate.ToShortDateString()</td>
+                    <td>@claim.StartDate.ToShortDateString()</td>
+                    <td>@claim.EndDate.ToShortDateString()</td>
+                    <td>@claim.HoursWorked</td>
+                    <td>@claim.HourlyRate.ToString("C")</td>
+                    <td>@claim.CalculateTotal().ToString("C")</td>
+                    <td style="max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">                        
+                        @if (!string.IsNullOrEmpty(claim.DocumentPath))
+                        {
+                            <a asp-action="DownloadDocument" asp-route-documentPath="@claim.DocumentPath" class="btn btn-link" style="color: blue; text-decoration: underline;">
+                                @claim.DocumentName
+                            </a>
+                        }
+                        else
+                        {
+                            <span>No Document</span>
+                        }
+                    </td>
+                    <td>
+                        <span class="@(claim.Status == "Approved" ? "text-success font-weight-bold" :
+                                        claim.Status == "Rejected" ? "text-danger font-weight-bold" :
+                                        "text-warning font-weight-bold")">
+                            @claim.Status
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (ViewData["Message"] != null)
+    {
+        <div class="alert">@ViewData["Message"]</div>
+    }
+</div>
