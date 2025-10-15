@@ -8,7 +8,7 @@ namespace ST10085639_PROG6212_CMCS.Controllers
 {
     public class AuthenticationController : Controller
     {
-        public readonly ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db;
 
         public AuthenticationController(ApplicationDbContext db)
         {
@@ -38,17 +38,17 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             var user = _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
             if (user != null)
             {
+                // Convert Guid to string when storing in session
                 HttpContext.Session.SetString("UserId", user.ID.ToString());
                 HttpContext.Session.SetString("Role", user.Role ?? "");
-
-                //Role-based redirection
+                // Role-based redirection
                 switch (user.Role)
                 {
                     case "Lecturer":
-                        return RedirectToAction("Create", "Claim"); //Submit Claims
-                    case "Programme Coordintor":
+                        return RedirectToAction("Create", "Claim"); // Submit Claims page
+                    case "Programme Coordinator":
                     case "Academic Manager":
-                        return RedirectToAction("AdminView", "Claim"); //Admin Page
+                        return RedirectToAction("AdminView", "Claim"); // AdminView page
                     default:
                         return RedirectToAction("Index", "Home");
                 }

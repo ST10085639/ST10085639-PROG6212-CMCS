@@ -16,6 +16,7 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             _db = db;
         }
 
+        // Admin view (Programme Coordinator & Academic Manager)
         public IActionResult AdminView()
         {
             if (!IsAdmin())
@@ -25,6 +26,7 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return View(claims);
         }
 
+        // Lecturer creates claim
         [HttpGet]
         public IActionResult Create()
         {
@@ -43,18 +45,18 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             {
                 var extension = Path.GetExtension(document.FileName).ToLower();
 
-                //File Restriction Types
-                var allowedExtentions = new[] { ".pdf", ".jpg", ".jpeg", ".docx" };
-                if (!allowedExtentions.Contains(extension))
+                // ✅ Restrict file types
+                var allowedExtensions = new[] { ".pdf", ".jpg", ".jpeg", ".docx" };
+                if (!allowedExtensions.Contains(extension))
                 {
-                    ViewData["ErrorMessage"] = "Only PDF, JPG, JPEG, and DOCX files are allowed.";
+                    ViewData["ErrorMessage"] = "Only PDF, JPG, and DOCX files are allowed.";
                     return View(model);
                 }
 
                 var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-                if (Directory.Exists(uploads)) Directory.CreateDirectory(uploads);
+                if (!Directory.Exists(uploads)) Directory.CreateDirectory(uploads);
 
-                var uniqueFileName = Guid.NewGuid().ToString() + extension;
+                var uniqueFileName = Guid.NewGuid().ToString() + extension; // prevent conflicts
                 var filePath = Path.Combine(uploads, uniqueFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
@@ -62,7 +64,7 @@ namespace ST10085639_PROG6212_CMCS.Controllers
                     document.CopyTo(stream);
                 }
 
-                //Save file name and path.
+                // ✅ Save both path & original name
                 model.DocumentPath = "/uploads/" + uniqueFileName;
                 model.DocumentName = document.FileName;
             }
@@ -75,13 +77,14 @@ namespace ST10085639_PROG6212_CMCS.Controllers
 
         public IActionResult LecturerHistory()
         {
-            if (IsLecturer()) 
+            if (!IsLecturer())
                 return Unauthorized();
 
             var claims = _db.Claims.ToList();
             return View(claims);
         }
 
+        // ✅ Download function
         public IActionResult DownloadDocument(string documentPath)
         {
             if (string.IsNullOrEmpty(documentPath))
@@ -119,7 +122,7 @@ namespace ST10085639_PROG6212_CMCS.Controllers
         private bool IsAdmin()
         {
             var role = HttpContext.Session.GetString("Role");
-            return role == "Programme Coodinator" || role == "Academic Manager";
+            return role == "Programme Coordinator" || role == "Academic Manager";
         }
 
         private bool IsLecturer()
