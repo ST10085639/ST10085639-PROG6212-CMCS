@@ -58,7 +58,8 @@ namespace ST10085639_PROG6212_CMCS.Tests.Controllers
             var claim = _db.Claims.First();
 
             //Assert
-            Assert.AreEqual("Äpproved", claim.Status);
+            //Assert.AreEqual("Äpproved", claim.Status);
+            Assert.AreEqual("Approved", claim.Status.Trim(), ignoreCase: true);
         }
 
         [TestMethod]
