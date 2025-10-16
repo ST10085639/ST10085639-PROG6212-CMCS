@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Testing.Platform.TestHost;
 
 namespace ST10085639_PROG6212_CMCS.Tests.Controllers
 {
@@ -44,7 +43,7 @@ namespace ST10085639_PROG6212_CMCS.Tests.Controllers
             //Mock session for Admin
             var context = new DefaultHttpContext();
             context.Session = new TestSession(); //Custom mock below
-            context.Session.Set("Role", "Programme Coordinator");
+            context.Session.SetString("Role", "Programme Coordinator");
             _controller.ControllerContext = new ControllerContext()
             {
                 HttpContext = context
