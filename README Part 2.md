@@ -305,6 +305,9 @@ Ensure you have the following installed:
 ## How to Clone, Build, and Run the Project
 
 ### 🪶 Step 1: Clone the Repository
+
+<img width="1917" height="971" alt="Github" src="https://github.com/user-attachments/assets/20e25573-0720-4d6c-a7b8-14e8bb25c946" />
+
 Open [https://github.com/ST10085639/ST10085639-PROG6212-CMCS](https://github.com/ST10085639/ST10085639-PROG6212-CMCS)
 
 Clone repo.
@@ -395,8 +398,9 @@ Clone repo.
 
 **Functions:**  
 - Users can enter claim details such as claim type, amount, and reason.  
-- Upload supporting documents (PDF, images, or receipts).  
-- Submit button stores the claim in the system database for admin review.
+- Upload supporting documents (PDF, jpg, jpeg or docx).  
+- Submit button stores the claim in the system database for admin review. Redirects to Claim History Page.
+- Clear Fields button, clears the form fields.
 
 (Visual Studios, 2025)
 
@@ -428,8 +432,7 @@ Clone repo.
 
 **Functions:**  
 - Displays all claims from users with their details.  
-- Admins can update each claim’s status (Approved, Pending, Rejected).  
-- Enables filtering and sorting for easier management. 
+- Admins can update each claim’s status (Approved, Pending, Rejected).
 
 (Visual Studios, 2025)
 
@@ -450,9 +453,236 @@ To run the tests:
 ### Figma Link  
 [https://www.figma.com/design/vUmzAj6queQJHisxrIMfvP/CMCS-Part-1?t=oGL0D8tsxlo675ZF-0](https://www.figma.com/design/vUmzAj6queQJHisxrIMfvP/CMCS-Part-1?t=oGL0D8tsxlo675ZF-0)
 
-### GitHub Link  
+### GitHub Link 
+
+<img width="1919" height="1079" alt="Commits" src="https://github.com/user-attachments/assets/7d317ba9-5aba-4421-b2b5-f6c924918fe6" />
+
 [https://github.com/ST10085639/ST10085639-PROG6212-CMCS](https://github.com/ST10085639/ST10085639-PROG6212-CMCS)
+
+### YouTube Link
+[https://youtu.be/uSYEgl-iD3s](https://youtu.be/uSYEgl-iD3s)
 
 ---
 
 ## Reference List
+
+---
+
+## 🏠 HomeController
+
+**Microsoft Learn.** 2024. *Handle requests with controllers in ASP.NET Core MVC*, 17 June 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/actions?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Error handling in ASP.NET Core*, 25 September 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Dependency injection in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Routing in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC Tutorial*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-mvc  
+  [Accessed 16 October 2025].
+
+---
+
+## 🧾 ClaimController
+
+**Microsoft Learn.** 2024. *Model binding in ASP.NET Core MVC*, 19 July 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *File uploads in ASP.NET Core*, 27 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Entity Framework Core basics*, 12 November 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/ef/core/  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Authorization and role management in ASP.NET Core*, 14 October 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC CRUD Operations*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-crud  
+  [Accessed 16 October 2025].
+
+---
+
+## 🔐 AuthenticationController
+
+**Microsoft Learn.** 2024. *Authentication and authorization in ASP.NET Core*, 14 February 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Session and state management in ASP.NET Core*, 24 April 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/app-state  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Model validation in ASP.NET Core MVC*, 28 August 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Razor Pages and MVC views in ASP.NET Core*, 17 July 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/views/overview  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core Authentication Tutorial*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-authentication  
+  [Accessed 16 October 2025].
+
+---
+
+## 🗃 ApplicationDbContext in Data
+
+**Microsoft Learn.** 2024. *DbContext in Entity Framework Core*, 12 November 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Configuring entity properties with the Fluent API in EF Core*, 28 March 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/ef/core/modeling/  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core EF Core Tutorial*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-ef-core  
+  [Accessed 16 October 2025].
+
+---
+
+## ⚙️ Program Class
+
+**Microsoft Learn.** 2024. *ASP.NET Core application startup*, 12 December 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Routing in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Session state in ASP.NET Core*, 24 April 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/app-state  
+  [Accessed 16 October 2025].
+
+---
+
+## 📑 Claims Class in Models
+
+**Microsoft Learn.** 2024. *Data annotations in ASP.NET Core MVC*, 28 August 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Working with DateTime in C#*, 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/dotnet/api/system.datetime  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *C# properties and methods*, 14 November 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties  
+  [Accessed 16 October 2025].
+
+---
+
+## 👤 Users Class in Models
+
+**Microsoft.** 2024. *Data annotations in ASP.NET Core MVC*, 28 August 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft.** 2024. *Regular expressions in .NET*, 18 July 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC Model Validation*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-model-validation  
+  [Accessed 16 October 2025].
+
+**Microsoft.** 2024. *Identity and security in ASP.NET Core*, 13 July 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity  
+  [Accessed 16 October 2025].
+
+---
+
+## 🧩 ErrorViewModel
+
+**Microsoft.** 2024. *Handle errors in ASP.NET Core*, 25 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling  
+  [Accessed 16 October 2025].
+
+**Microsoft.** 2024. *Logging and diagnostics in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC Error Handling*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-error-handling  
+  [Accessed 16 October 2025].
+
+---
+
+## 💻 Views
+
+**Microsoft Learn.** 2025. *Razor syntax reference for ASP.NET Core*, 27 August 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/razor-pages  
+  [Accessed 17 October 2025].
+
+**W3Schools.** 2024. *CSS Styling*, 2024. [Online].  
+  Available at: https://www.w3schools.com/css/  
+  [Accessed 17 October 2025].
+
+**MDN Web Docs.** 2025. *HTML input element*, 16 September 2025. [Online].  
+  Available at: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input  
+  [Accessed 17 October 2025].
+
+**MDN Web Docs.** 2025. *HTML DOM element type property*, 10 April 2025. [Online].  
+  Available at: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/type  
+  [Accessed 17 October 2025].
+
+**Font Awesome.** 2024. *Font Awesome 6*, 2024. [Online].  
+  Available at: https://fontawesome.com/  
+  [Accessed 17 October 2025].
+
+**Microsoft Learn.** 2025. *Handling errors in ASP.NET Core*, 25 September 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-9.0  
+  [Accessed 17 October 2025].
+
+**W3Schools.** 2024. *CSS Buttons*, 2024. [Online].  
+  Available at: https://www.w3schools.com/css/css3_buttons.asp  
+  [Accessed 17 October 2025].
+
+**W3Schools.** 2024. *CSS Card Layout*, 2024. [Online].  
+  Available at: https://www.w3schools.com/howto/howto_css_cards.asp  
+  [Accessed 17 October 2025].
+
+---
+
+## 📑 Unit Testing
+
+**Microsoft Learn.** 2024. Unit testing controller logic in ASP.NET Core, 17 July 2024. [Online].
+Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/testing 
+[Accessed 18 October 2025].
+
+**Microsoft Learn.** 2022. In-memory database provider - EF Core, 23 November 2022. [Online]. 
+Available at:https://learn.microsoft.com/en-us/ef/core/testing/in-memory 
+[Accessed 18 October 2025].
+
+**Sharma, M.** 2023. Mastering Unit Testing in .NET 6: Build Reliable and Maintainable Applications with xUnit and MSTest. Packt Publishing, 2023. [Online].
+Available at: https://www.packtpub.com/en-us/product/mastering-unit-testing-in-net-6-9781803241766
+[Accessed 18 October 2025].
+
+**Microsoft Learn.** 2022. In-memory database provider - EF Core, 23 November 2022. [Online]. 
+Available at: https://learn.microsoft.com/en-us/ef/core/testing/in-memory 
+[Accessed 18 October 2025].
+
+**Microsoft Learn.** 2024. Unit testing controller logic in ASP.NET Core, 17 July 2024. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/testing 
+[Accessed 18 October 2025].
+
+**MSDN.** 2025. Unit testing in .NET with MSTest, 27 March 2025. [Online]. 
+Available at: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest 
+[Accessed 18 October 2025].
+
+---
