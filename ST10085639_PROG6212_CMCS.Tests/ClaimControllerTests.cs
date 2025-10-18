@@ -1,4 +1,6 @@
-﻿//References:
+﻿// Microsoft Learn. 2022. In-memory database provider - EF Core, 23 November 2022. [Online]. Available at: https://learn.microsoft.com/en-us/ef/core/testing/in-memory [Accessed 18 October 2025].
+// Microsoft Learn. 2024. Unit testing controller logic in ASP.NET Core, 17 July 2024. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/testing [Accessed 18 October 2025].
+
 
 using System;
 using System.Collections.Generic;
