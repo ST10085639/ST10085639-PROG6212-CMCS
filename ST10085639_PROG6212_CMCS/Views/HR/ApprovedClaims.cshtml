@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ST10085639_PROG6212_CMCS.Models.Claim>
+
+    <h2>Approved Claims for Payment</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lecturer</th>
+                <th>Hours</th>
+                <th>Total Amount</th>
+                <th>Invoice</th>
+            </tr>
+        </thead>
+
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.TotalAmount.ToString("C")</td>
+                <td>
+                    <a href="/HR/Invoice/@claim.ClaimID" class="btn btn-primary">
+                        Generate Invoice
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
