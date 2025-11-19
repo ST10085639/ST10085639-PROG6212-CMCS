@@ -1,5 +1,28 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<ST10085639_PROG6212_CMCS.Models.User>
+
+    <h2>HR Dashboard</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+
+         </tr>
+         @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.ID</td>
+            <td>@user.FirstName @user.LastName</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td>
+                <a href="@Url.Action("EditUser", "HR", new {id= user.ID})">Edit</a>
+            </td>
+        </tr>
+    }
+    </table>
+
+<a href="@Url.Action("AddUser", "HR")">Add New User</a>
