@@ -3,6 +3,7 @@ using Microsoft.Identity.Client;
 using ST10085639_PROG6212_CMCS.Controllers;
 using ST10085639_PROG6212_CMCS.Data;
 using ST10085639_PROG6212_CMCS.Models;
+using System.Linq;
 
 
 namespace ST10085639_PROG6212_CMCS.Controllers
@@ -22,56 +23,59 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return role == "HR";
         }
 
-        public IActionResult HRView()
+        // This is to view all the users
+        public IActionResult Index()
         {
-            if (IsHR()) return Unauthorized();
+            if (!IsHR()) return Unauthorized();
+
+            var users = _db.Users.ToList();
+            return View(users);
+        }
+
+        // This is to add the user - GET
+        public IActionResult AddUser()
+        {
+            if (!IsHR()) return Unauthorized();
+            return View();
+        }
+
+        // This is to add the user - POST
+        [HttpPost]
+        public IActionResult AddUser(User model)
+        {
+            if (!IsHR()) return Unauthorized();
+            if (ModelState.IsValid)
             {
-                var users = _db.Users.ToList();
-                return View(users);
-            }
-
-            [HttpGet]
-
-            public IActionResult AddUser()
-            {
-                if (!IsHR()) return Unauthorized();
-                return View();
-            }
-
-            [HttpPost]
-            public IActionResult AddUser(User model)
-            {
-                if (!IsHR()) return Unauthorized();
-
                 _db.Users.Add(model);
                 _db.SaveChanges();
-
-                return RedirectToAction("HRView");
+                return RedirectToAction("Index");
             }
+            return View(model);
+        }
 
-            [HttpGet]
-            public IActionResult EditUser(int id)
+        // This is to Edit the user - GET
+        public IActionResult EditUser(int id)
+        {
+            if (!IsHR()) return Unauthorized();
+
+            var user = _db.Users.FirstOrDefault(u => u.ID == id);
+            if (user == null) return NotFound();
+
+            return View(user);
+        }
+
+        // This is to Edit the user - POST
+        [HttpPost]
+        public IActionResult EditUser(User model)
+        {
+            if (!IsHR()) return Unauthorized();
+            if (ModelState.IsValid)
             {
-                if (!IsHR()) return Unauthorized();
-
-                var user = _db.Users.FirstOrDefault(u => u.UserID == id);
-                return View(user);
-            }
-
-            [HttpPost]
-            public IActionResult EditUser(User model)
-            {
-                if (!IsHR()) return Unauthorized();
-
                 _db.Users.Update(model);
                 _db.SaveChanges();
-
-                return RedirectToAction("HRView");
+                return RedirectToAction("Index");
             }
+            return View(model);
         }
     }
 }
-
-
-
-        

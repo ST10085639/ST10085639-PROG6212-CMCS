@@ -4,6 +4,7 @@
 // Microsoft. 2024. Identity and security in ASP.NET Core, 13 July 2024. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity [Accessed 16 October 2025].
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
 
 namespace ST10085639_PROG6212_CMCS.Models
@@ -30,6 +31,7 @@ namespace ST10085639_PROG6212_CMCS.Models
         public string? Password { get; set; } //Reference must still be added from my notepad
 
         // This confirms that the password entered matches the first password fiels
+        [NotMapped]
         [Required]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string? ConfirmPassword { get; set; } // This is password validation for security purposes
