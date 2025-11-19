@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using ST10085639_PROG6212_CMCS.Controllers;
 using ST10085639_PROG6212_CMCS.Data;
@@ -23,37 +24,41 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return role == "HR";
         }
 
-        // This is to view all the users
+        // This talks to the HRView.cshtml
         public IActionResult Index()
         {
             if (!IsHR()) return Unauthorized();
 
             var users = _db.Users.ToList();
-            return View(users);
+            return View("HRView", users); // explicitly point to HRView.cshtml
         }
 
-        // This is to add the user - GET
+        // This adds the user
+        // GET - place after the Index()
         public IActionResult AddUser()
         {
             if (!IsHR()) return Unauthorized();
-            return View();
+            return View(); // will load AddUser.cshtml
         }
 
-        // This is to add the user - POST
+        // POST 
         [HttpPost]
         public IActionResult AddUser(User model)
         {
             if (!IsHR()) return Unauthorized();
+
             if (ModelState.IsValid)
             {
                 _db.Users.Add(model);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(model);
         }
 
-        // This is to Edit the user - GET
+        // This Edits the users
+        // GET 
         public IActionResult EditUser(int id)
         {
             if (!IsHR()) return Unauthorized();
@@ -61,34 +66,58 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             var user = _db.Users.FirstOrDefault(u => u.ID == id);
             if (user == null) return NotFound();
 
-            return View(user);
+            return View(user); // This will load EditUser.cshtml
         }
 
-        // This is to Edit the user - POST
+        // POST 
         [HttpPost]
         public IActionResult EditUser(User model)
         {
             if (!IsHR()) return Unauthorized();
+
             if (ModelState.IsValid)
             {
                 _db.Users.Update(model);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(model);
         }
 
+        // This is the Invoice view
         public IActionResult Invoice(int id)
         {
-            if (!IsHR())
-                return RedirectToAction("Login", "Authentication");
+            if (!IsHR()) return RedirectToAction("Login", "Authentication");
 
-            var claim = _context.Claims.FirstOrDefault(c => c.ClaimID == id);
+            var claim = _db.Claims.FirstOrDefault(c => c.ClaimID == id); // use _db
 
-            if (claim == null)
-                return NotFound();
+            if (claim == null) return NotFound();
 
-            return View(claim);
+            return View(claim); // Invoice.cshtml
+        }
+
+        // This downloads the invoice
+        public IActionResult DownloadInvoice(int id)
+        {
+            var claim = _db.Claims.FirstOrDefault(c => c.ClaimID == id); // use _db
+
+            if (claim == null) return NotFound();
+
+            byte[] fileBytes = System.Text.Encoding.UTF8.GetBytes("Invoice placeholder");
+            return File(fileBytes, "application/pdf", "Invoice.pdf");
+        }
+
+        // This approves the claims
+        public IActionResult ApprovedClaims()
+        {
+            if (!IsHR()) return Unauthorized();
+
+            var approvedClaims = _db.Claims
+                .Where(c => c.Status == "Approved") // This makes sure Claim has Status
+                .ToList();
+
+            return View(approvedClaims); // ApprovedClaims.cshtml
         }
     }
 }
