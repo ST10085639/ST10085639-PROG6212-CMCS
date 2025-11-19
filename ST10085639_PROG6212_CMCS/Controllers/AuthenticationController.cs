@@ -14,7 +14,6 @@ namespace ST10085639_PROG6212_CMCS.Controllers
     // It handles sessions, verifies credentials and redirects accoring to the user roles.
     public class AuthenticationController : Controller
     {
-        // This is the dependency injection of the databse context and it accessed the users table
         private readonly ApplicationDbContext _db;
 
         public AuthenticationController(ApplicationDbContext db)
@@ -22,34 +21,26 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             _db = db;
         }
 
-        // It displays the users registration form
         [HttpGet]
         public IActionResult SignUp() => View();
 
-        // This handles the submissions for the registration form
         [HttpPost]
         public IActionResult SignUp(User model)
         {
-            // This identifies whether the imput model matches the validation rules specified in the user model
             if (!ModelState.IsValid) return View(model);
 
-            // This will add the new user record to the database
             _db.Users.Add(model);
             _db.SaveChanges();
 
-            // This will redirect the users to the login page once registration is complete
             return RedirectToAction("Login");
         }
 
-        //This displays the login form for the user authentication
         [HttpGet]
         public IActionResult Login() => View();
 
-        // This handles the login form submissions and confirms user credentials, after the authentication is successful, it creates a session
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            // This will check if the email and password matches an existing user
             var user = _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
             if (user != null)
             {
@@ -64,22 +55,22 @@ namespace ST10085639_PROG6212_CMCS.Controllers
                     case "Programme Coordinator":
                     case "Academic Manager":
                         return RedirectToAction("AdminView", "Claim"); // AdminView page
+                    case "HR":
+                        return RedirectToAction("HRView", "HR"); // HRView page
                     default:
                         return RedirectToAction("Index", "Home");
                 }
             }
 
-            // This displays an error if the authentication fails
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View();
         }
 
-        // This will logout the current user by clearing the active session
         [HttpPost]
         public IActionResult Logout()
         {
-            HttpContext.Session.Clear(); // This removes all the session data to ensure a clean logout
-            return RedirectToAction("Login", "Authentication"); // This redirects the users to the login page after logging out
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Authentication");
         }
     }
 }

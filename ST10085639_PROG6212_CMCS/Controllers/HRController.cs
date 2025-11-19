@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using ST10085639_PROG6212_CMCS.Controllers;
@@ -24,100 +26,90 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return role == "HR";
         }
 
-        // This talks to the HRView.cshtml
-        public IActionResult Index()
+        // ----------------------------
+        // HR DASHBOARD (formerly HRView)
+        // ----------------------------
+        public IActionResult HRView()
         {
-            if (!IsHR()) return Unauthorized();
+            if (!IsHR())
+                return RedirectToAction("Login", "Authentication");
 
-            var users = _db.Users.ToList();
-            return View("HRView", users); // explicitly point to HRView.cshtml
+            // Get all claims for the HR dashboard
+            var claims = _db.Claims.ToList();
+
+            // Return the view located at Views/HR/Index.cshtml
+            return View("HRView",claims);
         }
 
-        // This adds the user
-        // GET - place after the Index()
-        public IActionResult AddUser()
-        {
-            if (!IsHR()) return Unauthorized();
-            return View(); // will load AddUser.cshtml
-        }
-
-        // POST 
-        [HttpPost]
-        public IActionResult AddUser(User model)
-        {
-            if (!IsHR()) return Unauthorized();
-
-            if (ModelState.IsValid)
-            {
-                _db.Users.Add(model);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(model);
-        }
-
-        // This Edits the users
-        // GET 
-        public IActionResult EditUser(int id)
-        {
-            if (!IsHR()) return Unauthorized();
-
-            var user = _db.Users.FirstOrDefault(u => u.ID == id);
-            if (user == null) return NotFound();
-
-            return View(user); // This will load EditUser.cshtml
-        }
-
-        // POST 
-        [HttpPost]
-        public IActionResult EditUser(User model)
-        {
-            if (!IsHR()) return Unauthorized();
-
-            if (ModelState.IsValid)
-            {
-                _db.Users.Update(model);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(model);
-        }
-
-        // This is the Invoice view
+        // ----------------------------
+        // INVOICE VIEW
+        // ----------------------------
         public IActionResult Invoice(int id)
         {
-            if (!IsHR()) return RedirectToAction("Login", "Authentication");
+            if (!IsHR())
+                return RedirectToAction("Login", "Authentication");
 
-            var claim = _db.Claims.FirstOrDefault(c => c.ClaimID == id); // use _db
+            var claim = _db.Claims.FirstOrDefault(c => c.ClaimID == id);
+            if (claim == null)
+                return NotFound();
 
-            if (claim == null) return NotFound();
-
-            return View(claim); // Invoice.cshtml
+            return View(claim); // Loads Invoice.cshtml
         }
 
-        // This downloads the invoice
+        // ----------------------------
+        // DOWNLOAD INVOICE PDF
+        // ----------------------------
         public IActionResult DownloadInvoice(int id)
         {
-            var claim = _db.Claims.FirstOrDefault(c => c.ClaimID == id); // use _db
+            if (!IsHR())
+                return RedirectToAction("Login", "Authentication");
 
-            if (claim == null) return NotFound();
+            var claim = _db.Claims.FirstOrDefault(c => c.ClaimID == id);
+            if (claim == null)
+                return NotFound();
 
-            byte[] fileBytes = System.Text.Encoding.UTF8.GetBytes("Invoice placeholder");
-            return File(fileBytes, "application/pdf", "Invoice.pdf");
-        }
+            using (var ms = new MemoryStream())
+            {
+                var document = new Document();
+                PdfWriter.GetInstance(document, ms);
+                document.Open();
 
-        // This approves the claims
-        public IActionResult ApprovedClaims()
-        {
-            if (!IsHR()) return Unauthorized();
+                // Title
+                var titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 20);
+                document.Add(new Paragraph("Claim Invoice", titleFont));
+                document.Add(new Paragraph(" "));
 
-            var approvedClaims = _db.Claims
-                .Where(c => c.Status == "Approved") // This makes sure Claim has Status
-                .ToList();
+                // Invoice header
+                var headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14);
+                document.Add(new Paragraph($"Invoice for Claim ID: {claim.ClaimID}", headerFont));
+                document.Add(new Paragraph(" "));
 
-            return View(approvedClaims); // ApprovedClaims.cshtml
+                // Claim details table
+                PdfPTable table = new PdfPTable(2) { WidthPercentage = 100 };
+
+                void AddRow(string label, string value)
+                {
+                    table.AddCell(new PdfPCell(new Phrase(label)) { BackgroundColor = BaseColor.LightGray });
+                    table.AddCell(new Phrase(value));
+                }
+
+                AddRow("Lecturer Name:", claim.LecturerName);
+                AddRow("Hours Worked:", claim.HoursWorked.ToString());
+                AddRow("Hourly Rate:", claim.HourlyRate.ToString("C"));
+                AddRow("Total Amount:", claim.TotalAmount.ToString("C"));
+                AddRow("Status:", claim.Status);
+                AddRow("Date Submitted:", claim.SubmittedDate.ToShortDateString());
+
+                document.Add(table);
+
+                // Footer
+                document.Add(new Paragraph("\nGenerated by CMCS System"));
+                document.Add(new Paragraph("Thank you."));
+
+                document.Close();
+
+                return File(ms.ToArray(), "application/pdf", $"Invoice_{claim.ClaimID}.pdf");
+            }
         }
     }
 }

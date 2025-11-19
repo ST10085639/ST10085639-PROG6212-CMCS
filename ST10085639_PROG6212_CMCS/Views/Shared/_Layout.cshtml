@@ -37,6 +37,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @{
+                        var role = Context.Session.GetString("Role");
+                    }
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -48,8 +51,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Claim" asp-action="LecturerHistory">Claim History</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Claim" asp-action="AdminView">Admin Dashboard</a>
+                            <a class="nav-link text-dark" asp-controller="HR" asp-action="HRView">HR Dashboard</a>
+
                         </li>
+                        
                     </ul>
                     <!-- Right-aligned Logout button -->
                     <form asp-area="" asp-controller="Authentication" asp-action="Logout" method="post" class="d-inline">

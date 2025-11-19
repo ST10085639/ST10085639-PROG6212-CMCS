@@ -31,7 +31,6 @@ namespace ST10085639_PROG6212_CMCS.Models
         public string? Password { get; set; } //Reference must still be added from my notepad
 
         // This confirms that the password entered matches the first password fiels
-        [NotMapped]
         [Required]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string? ConfirmPassword { get; set; } // This is password validation for security purposes

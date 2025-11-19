@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ST10085639_PROG6212_CMCS.Models.Claim>
+@using System.Globalization
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Hours Worked</th>
+            <th>Total Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA"))</td>
+                <td>
+                    <a href="@Url.Action("Invoice", "HR", new { id = claim.ClaimID })" class="btn btn-primary">View Invoice</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
