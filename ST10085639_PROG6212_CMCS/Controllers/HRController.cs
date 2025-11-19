@@ -77,5 +77,18 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             }
             return View(model);
         }
+
+        public IActionResult Invoice(int id)
+        {
+            if (!IsHR())
+                return RedirectToAction("Login", "Authentication");
+
+            var claim = _context.Claims.FirstOrDefault(c => c.ClaimID == id);
+
+            if (claim == null)
+                return NotFound();
+
+            return View(claim);
+        }
     }
 }

@@ -1,0 +1,16 @@
+﻿@model ST10085639_PROG6212_CMCS.Models.Claim
+
+<h2>Invoice</h2>
+
+<div class="card p-3">
+    <p><strong>Lecturer:</strong> @Model.LecturerName</p>
+    <p><strong>Hours Worked:</strong> @Model.HoursWorked</p>
+    <p><strong>Rate:</strong> @Model.HourlyRate.ToString("C")</p>
+    <p><strong>Total Amount:</strong> @Model.TotalAmount.ToString("C")</p>
+
+    <hr />
+
+    <a class="btn btn-success" href="/HR/DownloadInvoice/@Model.ClaimID">
+        Download PDF Invoice
+        </a>
+</div>
