@@ -1,0 +1,31 @@
+﻿@model ST10085639_PROG6212_CMCS.Models.Claim
+@using System.Globalization
+
+<style>
+    /* Styling for the body element, with a gradient background and full viewport height */
+    body {
+        margin: 0; /* Remove default margin */
+        font-family: 'Helvetica Neue', Arial, sans-serif; /* Font family for the page */
+        color: black; /* Default text color is black */
+        background: linear-gradient(to bottom right, #004e92, #000428, #004e92); /* light blue to deep blue gradient */
+        background-attachment: fixed; /* Keep the background fixed during scrolling */
+        min-height: 100vh; /* Ensure full height of the viewport */
+        display: flex; /* Use flexbox layout */
+        flex-direction: column; /* Arrange children in a column */
+    }
+</style>
+
+<h2>Invoice Details</h2>
+
+<div class="card p-3">
+    <p><strong>Lecturer:</strong> @Model.LecturerName</p>
+    <p><strong>Hours Worked:</strong> @Model.HoursWorked</p>
+    <p><strong>Rate:</strong> @Model.HourlyRate.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA"))</p>
+    <p><strong>Total Amount:</strong> @Model.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA"))</p>
+
+    <hr />
+
+    <a class="btn btn-success" href="@Url.Action("DownloadInvoice", "HR", new { id = Model.ClaimID })">
+        Download PDF Invoice
+    </a>
+</div>

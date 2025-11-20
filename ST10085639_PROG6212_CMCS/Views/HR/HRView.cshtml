@@ -1,6 +1,81 @@
 ﻿@model List<ST10085639_PROG6212_CMCS.Models.Claim>
 @using System.Globalization
 
+<style>
+    /* Styling for the body element, with a gradient background and full viewport height */
+    body {
+        margin: 0; /* Remove default margin */
+        font-family: 'Helvetica Neue', Arial, sans-serif; /* Font family for the page */
+        color: white; /* Default text color is white */
+        background: linear-gradient(to bottom right, #004e92, #000428, #004e92); /* light blue to deep blue gradient */
+        background-attachment: fixed; /* Keep the background fixed during scrolling */
+        min-height: 100vh; /* Ensure full height of the viewport */
+        display: flex; /* Use flexbox layout */
+        flex-direction: column; /* Arrange children in a column */
+    }
+
+    /* Container for the dashboard content */
+    .dashboard-container {
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Arrange children in a column */
+        align-items: center; /* Center align children horizontally */
+        padding: 20px; /* Padding around the container */
+        color: white; /* White text color for all content */
+    }
+
+    /* Styling for the main heading */
+    h2 {
+        color: #fff; /* White color for the heading */
+        font-weight: bold; /* Bold text */
+        text-align: center; /* Center align the text */
+    }
+
+    /* Styling for the table */
+    .table {
+        width: 100%; /* Full width of the parent container */
+        max-width: 900px; /* Maximum width of the table */
+        margin: 20px auto; /* Center the table with vertical margin */
+        background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+        border-radius: 8px; /* Rounded corners for the table */
+        overflow: hidden; /* Hide overflow content */
+    }
+
+        /* Styling for table header cells and table data cells */
+        .table th, .table td {
+            padding: 15px; /* Padding inside each cell */
+            text-align: center; /* Center-align the text in the cells */
+            color: white; /* White text color */
+            border-bottom: 1px solid #ddd; /* Light gray border below cells */
+        }
+
+        /* Styling for table header cells */
+        .table th {
+            background-color: rgba(0, 0, 0, 0.6); /* Dark background for headers */
+            font-weight: bold; /* Bold font for headers */
+        }
+
+        /* Alternate row coloring for better readability */
+        .table tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1); /* Light background for even rows */
+        }
+
+    /* Flexbox layout for action buttons */
+    .actions {
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-evenly; /* Evenly space items */
+    }
+
+    /* Styling for alert messages */
+    .alert {
+        background-color: #28a745; /* Green background for alerts */
+        color: white; /* White text color */
+        padding: 10px; /* Padding for alert box */
+        border-radius: 5px; /* Rounded corners for alert */
+        margin-top: 15px; /* Margin above the alert */
+        text-align: center; /* Center align text in alert */
+    }
+</style>
+
 @{
     ViewData["Title"] = "HR Dashboard";
 }
@@ -30,21 +105,22 @@
                     <td>@claim.ClaimID</td>
                     <td>@claim.LecturerName</td>
                     <td>@claim.HoursWorked</td>
-                    <td>@claim.HourlyRate.ToString("C")</td>
-                    <td>@claim.TotalAmount.ToString("C")</td>
+                    <td>@claim.HourlyRate.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA"))</td>
+                    <td>@claim.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA"))</td>
                     <td>@claim.Status</td>
                     <td>@claim.SubmittedDate.ToShortDateString()</td>
 
                     <td>
-                        <a href="/HR/Invoice?id=@claim.ClaimID"
+                        <a href="@Url.Action("Invoice", "HR", new { id = claim.ClaimID })"
                            class="btn btn-primary btn-sm mb-1">
                             View Invoice
                         </a>
 
-                        <a href="/HR/DownloadInvoice?id=@claim.ClaimID"
+                        <a href="@Url.Action("DownloadInvoice", "HR", new { id = claim.ClaimID })"
                            class="btn btn-success btn-sm">
                             Download Invoice
                         </a>
+                        
                     </td>
                 </tr>
             }

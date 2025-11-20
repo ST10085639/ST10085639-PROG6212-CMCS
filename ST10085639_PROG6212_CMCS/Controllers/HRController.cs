@@ -6,6 +6,7 @@ using Microsoft.Identity.Client;
 using ST10085639_PROG6212_CMCS.Controllers;
 using ST10085639_PROG6212_CMCS.Data;
 using ST10085639_PROG6212_CMCS.Models;
+using System.Globalization;
 using System.Linq;
 
 
@@ -95,8 +96,8 @@ namespace ST10085639_PROG6212_CMCS.Controllers
 
                 AddRow("Lecturer Name:", claim.LecturerName);
                 AddRow("Hours Worked:", claim.HoursWorked.ToString());
-                AddRow("Hourly Rate:", claim.HourlyRate.ToString("C"));
-                AddRow("Total Amount:", claim.TotalAmount.ToString("C"));
+                AddRow("Hourly Rate:", claim.HourlyRate.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA")));
+                AddRow("Total Amount:", claim.TotalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-ZA")));
                 AddRow("Status:", claim.Status);
                 AddRow("Date Submitted:", claim.SubmittedDate.ToShortDateString());
 
