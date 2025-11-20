@@ -686,3 +686,508 @@ Available at: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing
 [Accessed 18 October 2025].
 
 ---
+
+# PROGRAMMING 2B PART 3
+
+---
+
+**Student Number:**  
+ST10085639  
+
+**Programme Code:**  
+BCAD2  
+
+**Module Lecturer:**  
+Courteney Young  
+
+**Module Code:**  
+PROG6212  
+
+**Date of Submission:**  
+21-11-2025  
+
+---
+
+## The Database Structure
+
+The database uses a **relational SQL model** compatible with .NET and Microsoft SQL Server. It consists of several key tables:
+
+<img width="1573" height="901" alt="Database" src="https://github.com/user-attachments/assets/da6abdda-639a-4a35-b1b6-ce768dd9df56" />
+
+- **Users:** Stores credentials, roles, and user details.  
+- **Claims:** Tracks claims with details such as submission date, hours worked, and approval status.  
+
+---
+
+## Installation and Setup
+
+### 🧩 Prerequisites
+Ensure you have the following installed:
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or newer  
+- .NET 8.0 SDK or compatible version  
+- SQL Server (Express or Developer Edition)  
+- Git  
+
+---
+
+## How to Clone, Build, and Run the Project
+
+### 🪶 Step 1: Clone the Repository
+
+<img width="1918" height="905" alt="Repo" src="https://github.com/user-attachments/assets/c3b351d0-9568-4428-ac80-e45a1ebde360" />
+
+Open [https://github.com/ST10085639/ST10085639-PROG6212-CMCS](https://github.com/ST10085639/ST10085639-PROG6212-CMCS)
+
+Clone repo.
+
+---
+
+### 🧱 Step 2: Open the Solution in Visual Studio
+
+1. Launch **Visual Studio**.  
+2. Click **File → Open → Project/Solution**.  
+3. Browse to the cloned directory and open `ST10085639_PROG6212_CMCS.sln`.  
+4. Wait for Visual Studio to restore NuGet dependencies automatically.
+
+---
+
+### ▶️ Step 3: Build and Run the Project
+
+1. In Visual Studio, select the **ST10085639_PROG6212_CMCS** project as the **Startup Project**.  
+2. Click **Build → Build Solution** or press `Ctrl + Shift + B`.  
+3. Once the build is successful, click **Start (▶)** or press `F5` to run the application.  
+4. The application will launch in your default browser at a local address (e.g., `https://localhost:5001`).
+
+---
+
+## The GUI/UI Layout
+
+**Figure 1:** Home Page
+
+<img width="1917" height="1017" alt="Home" src="https://github.com/user-attachments/assets/a96aa406-5436-4d21-be50-cf0cd37cdd48" />
+
+🏠 **Home Page**
+
+**Purpose:** Serves as the landing page after login, welcoming users to the Claims Management and Control System (CMCS).  
+
+**Functions:**  
+- Provides navigation to all major sections (Submit Claims, Claim History, Admin Dashboard, HR Dashboard).  
+- Displays general announcements or system updates.  
+- Sign-Up & Login buttons.  
+
+(Visual Studios, 2025)
+
+---
+
+**Figure 2:** Sign Up Page
+
+🧾 **Sign-Up Page**
+
+<img width="1918" height="1015" alt="SignUp" src="https://github.com/user-attachments/assets/0eea0718-9911-443e-aa98-8991ef3c5671" />
+
+**Purpose:** Enables new users to register for a CMCS account by submitting their details and selecting their role.  
+
+**Functions:**  
+- **Input Fields:** Collects user information including first name, last name, email address, password, and confirmation password.  
+- **Role Selection:** Allows users to choose their system role (e.g., Academic Manager, Program Coordinator, Lecturer, HR).  
+- **Sign-Up Button:** Submits the registration form to create a new account in the system.  
+- **Login Redirect:** Provides a link for users who already have an account.  
+- **Navigation Bar:** Maintains a consistent design and allows smooth navigation across the CMCS platform. 
+
+(Visual Studios, 2025)
+
+---
+
+**Figure 3:** Login Page
+
+🔐 **Login Page**
+
+<img width="1917" height="1018" alt="Login" src="https://github.com/user-attachments/assets/e9bd19c2-36cc-4b56-bd01-60ff03f07ea2" />
+
+**Purpose:** Allows registered users to securely access their CMCS account by verifying their credentials.  
+
+**Functions:**  
+- **Email & Password Fields:** Users enter their registered credentials (passwords are masked for security).  
+- **Login Button:** Authenticates credentials and redirects users to the appropriate dashboard or homepage.  
+- **Sign-Up Link:** Directs new users to the registration page.  
+- **Navigation Bar:** Provides quick access to other pages (Home, Submit Claims, Claim History, etc.) and shows a Logout button once logged in.
+
+(Visual Studios, 2025)
+
+---
+
+**Figure 4:** Submit Claims Page
+
+🧾 **Submit Claims Page**
+
+<img width="1430" height="650" alt="Submit Claim" src="https://github.com/user-attachments/assets/c2fa475a-8ec1-4ab7-a1ac-9e46a00bfdea" />
+
+**Purpose:** Allows users to submit new claim requests. Only Lecturers can access.  
+
+**Functions:**  
+- Users can enter claim details such as claim type, amount, and reason.  
+- Upload supporting documents (PDF, jpg, jpeg or docx).  
+- Submit button stores the claim in the system database for admin review. Redirects to Claim History Page.
+- Clear Fields button, clears the form fields.
+
+(Visual Studios, 2025)
+
+---
+
+**Figure 5:** Claim History Page
+
+📜 **Claim History Page**
+
+<img width="1430" height="661" alt="Claim History" src="https://github.com/user-attachments/assets/139bb536-0dd6-41af-b9d6-d83b623e912a" />
+
+**Purpose:** Displays a record of all submitted claims by the user. Only Lecturers can access.  
+
+**Functions:**  
+- Shows claim details such as claim ID, submission date, claim amount, and current status (Pending, Approved, or Rejected).  
+- Helps users track the progress of each claim over time.  
+
+(Visual Studios, 2025)
+
+---
+
+**Figure 6:** Admin Dashboard Page
+
+⚙️ **Admin Dashboard Page**
+
+<img width="1430" height="644" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/c2396265-78cf-4ae7-a1d9-6d54644102bd" />
+
+**Purpose:** Provides administrative tools for managing and reviewing claims. Only Admin can access.  
+
+**Functions:**  
+- Displays all claims from users with their details.  
+- Admins can update each claim’s status (Approved, Pending, Rejected).
+
+(Visual Studios, 2025)
+
+---
+
+**Figure 7:** HR Dashboard Page
+
+⚙️ **HR Dashboard Page** 
+
+<img width="1430" height="687" alt="HR Dashboard" src="https://github.com/user-attachments/assets/ec733248-0d33-4f6f-9049-5ff55681ea43" />
+
+**Purpose:** Provides HR tools for managing and reviewing claims, providing invoices. Only HR can access. 
+
+**Functions:**
+Displays all claims from users with their details. 
+HR can view and download invoices. 
+
+(Visual Studios, 2025) 
+
+---
+
+**Figure 8:** HR Invoice Page
+
+⚙️ **HR Invoice Page** 
+
+<img width="1430" height="650" alt="HR Invoice" src="https://github.com/user-attachments/assets/b47e5f44-0d6d-4d23-8212-0f7559033a9e" />
+
+**Purpose:** Provides an invoice with claim details to
+review. Only HR can access. 
+
+**Functions:** Displays claim from user with the details of that specific claim. 
+HR can download invoice. 
+
+(Visual Studios, 2025) 
+
+---
+
+**Figure 9:** HR Invoice PDF
+
+⚙️ **HR Invoice PDF** 
+
+<img width="780" height="623" alt="HR PDF" src="https://github.com/user-attachments/assets/5ab8e934-78a6-45be-8e55-6dd6e16ede7d" />
+
+**Purpose:** Provides an invoice with claim details to review in PDF. Only HR can access. 
+
+(Visual Studios, 2025)
+
+---
+
+### 🧪 Step 4: Running Tests
+
+The project includes a **unit test project (`ST10085639_PROG6212_CMCS.Tests`)**.  
+To run the tests:
+
+1. In Visual Studio, open the **Test Explorer** (`View → Test Explorer`).  
+2. Click **Run All Tests** to execute all available test cases.
+
+ <img width="978" height="535" alt="Passed Tests" src="https://github.com/user-attachments/assets/8ab60fe7-8310-4711-a6aa-d75aa5e0de26" />
+
+---
+
+### Figma Link  
+[https://www.figma.com/design/vUmzAj6queQJHisxrIMfvP/CMCS-Part-1?t=oGL0D8tsxlo675ZF-0](https://www.figma.com/design/vUmzAj6queQJHisxrIMfvP/CMCS-Part-1?t=oGL0D8tsxlo675ZF-0)
+
+### GitHub Link 
+
+<img width="1918" height="897" alt="Commits" src="https://github.com/user-attachments/assets/3576b4cc-3097-412a-a0ff-b4ed63d954bb" />
+
+[https://github.com/ST10085639/ST10085639-PROG6212-CMCS](https://github.com/ST10085639/ST10085639-PROG6212-CMCS)
+
+### Part 2 YouTube Link
+[https://youtu.be/uSYEgl-iD3s](https://youtu.be/uSYEgl-iD3s)
+
+### Part 3 YouTube Link
+[https://youtu.be/hxHg7iNfvs8](https://youtu.be/hxHg7iNfvs8)
+
+---
+
+## Reference List
+
+---
+
+## 🏠 HomeController
+**Microsoft Learn.** 2024. *Handle requests with controllers in ASP.NET Core MVC*, 17 June 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/actions?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Error handling in ASP.NET Core*, 25 September 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Dependency injection in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Routing in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC Tutorial*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-mvc  
+  [Accessed 16 October 2025].
+
+---
+
+## 🧾 ClaimController
+
+**Microsoft Learn.** 2024. *Model binding in ASP.NET Core MVC*, 19 July 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *File uploads in ASP.NET Core*, 27 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Entity Framework Core basics*, 12 November 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/ef/core/  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Authorization and role management in ASP.NET Core*, 14 October 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC CRUD Operations*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-crud  
+  [Accessed 16 October 2025].
+
+---
+
+## 🔐 AuthenticationController
+
+**Microsoft Learn.** 2024. *Authentication and authorization in ASP.NET Core*, 14 February 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Session and state management in ASP.NET Core*, 24 April 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/app-state  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Model validation in ASP.NET Core MVC*, 28 August 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Razor Pages and MVC views in ASP.NET Core*, 17 July 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/views/overview  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core Authentication Tutorial*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-authentication  
+  [Accessed 16 October 2025].
+
+---
+
+## 🧾 HRController
+
+**Microsoft.** 2022. *ASP.NET MVC Controller Overview (C#)*, 11 July 2022. [Online]. 
+Available at: https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
+[Accessed 20 November 2025].
+
+**Microsoft.** 2022. *Understanding Models, Views, and Controllers (C#)*, 11 July 2022. [Online].
+Available at: https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs
+[Accessed 20 November 2025].
+
+**Microsoft.** 2025. Part 6, *controller methods and views in ASP.NET Core*, 2 March 2025. [Online].
+Available at: https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/controller-methods-views?view=aspnetcore-9.0
+[Accessed 20 November 2025].
+
+---
+
+## 🗃 ApplicationDbContext in Data
+
+**Microsoft Learn.** 2024. *DbContext in Entity Framework Core*, 12 November 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Configuring entity properties with the Fluent API in EF Core*, 28 March 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/ef/core/modeling/  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core EF Core Tutorial*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-ef-core  
+  [Accessed 16 October 2025].
+
+---
+
+## ⚙️ Program Class
+
+**Microsoft Learn.** 2024. *ASP.NET Core application startup*, 12 December 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/startup  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Routing in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Session state in ASP.NET Core*, 24 April 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/app-state  
+  [Accessed 16 October 2025].
+
+---
+
+## 📑 Claims Class in Models
+
+**Microsoft Learn.** 2024. *Data annotations in ASP.NET Core MVC*, 28 August 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *Working with DateTime in C#*, 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/dotnet/api/system.datetime  
+  [Accessed 16 October 2025].
+
+**Microsoft Learn.** 2024. *C# properties and methods*, 14 November 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties  
+  [Accessed 16 October 2025].
+
+---
+
+## 👤 Users Class in Models
+
+**Microsoft.** 2024. *Data annotations in ASP.NET Core MVC*, 28 August 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-9.0  
+  [Accessed 16 October 2025].
+
+**Microsoft.** 2024. *Regular expressions in .NET*, 18 July 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC Model Validation*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-model-validation  
+  [Accessed 16 October 2025].
+
+**Microsoft.** 2024. *Identity and security in ASP.NET Core*, 13 July 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity  
+  [Accessed 16 October 2025].
+
+---
+
+## 🧩 ErrorViewModel
+
+**Microsoft.** 2024. *Handle errors in ASP.NET Core*, 25 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling  
+  [Accessed 16 October 2025].
+
+**Microsoft.** 2024. *Logging and diagnostics in ASP.NET Core*, 18 September 2024. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging  
+  [Accessed 16 October 2025].
+
+**TutorialsTeacher.** 2024. *ASP.NET Core MVC Error Handling*, 2024. [Online].  
+  Available at: https://www.tutorialsteacher.com/core/aspnet-core-error-handling  
+  [Accessed 16 October 2025].
+
+---
+
+## 💻 Views
+
+**Microsoft Learn.** 2025. *Razor syntax reference for ASP.NET Core*, 27 August 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/razor-pages  
+  [Accessed 17 October 2025].
+
+**W3Schools.** 2024. *CSS Styling*, 2024. [Online].  
+  Available at: https://www.w3schools.com/css/  
+  [Accessed 17 October 2025].
+
+**MDN Web Docs.** 2025. *HTML input element*, 16 September 2025. [Online].  
+  Available at: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input  
+  [Accessed 17 October 2025].
+
+**MDN Web Docs.** 2025. *HTML DOM element type property*, 10 April 2025. [Online].  
+  Available at: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/type  
+  [Accessed 17 October 2025].
+
+**Font Awesome.** 2024. *Font Awesome 6*, 2024. [Online].  
+  Available at: https://fontawesome.com/  
+  [Accessed 17 October 2025].
+
+**Microsoft Learn.** 2025. *Handling errors in ASP.NET Core*, 25 September 2025. [Online].  
+  Available at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-9.0  
+  [Accessed 17 October 2025].
+
+**W3Schools.** 2024. *CSS Buttons*, 2024. [Online].  
+  Available at: https://www.w3schools.com/css/css3_buttons.asp  
+  [Accessed 17 October 2025].
+
+**W3Schools.** 2024. *CSS Card Layout*, 2024. [Online].  
+  Available at: https://www.w3schools.com/howto/howto_css_cards.asp  
+  [Accessed 17 October 2025].
+
+**Microsoft.** 2024. *Standard numeric and currency formatting*, 22 October 2024. [Online]. Available at: https://learn.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings
+[Accessed 20 November 2025].
+
+**Microsoft.** 2024. *Routing in ASP.NET Core MVC*, 17 July 2024. [Online]. 
+Available at: https://learn.microsoft.com/aspnet/core/mvc/controllers/routing
+[Accessed 20 November 2025].
+
+**Microsoft.** 2024. *Globalization and localization*, 2024. [Online]. 
+Available at: https://learn.microsoft.com/dotnet/api/system.globalization.cultureinfo
+[Accessed 20 September 2025].
+
+**Microsoft.** 2024. *Razor Pages and MVC views*, 17 June 2024. [Online]. 
+Available at: https://learn.microsoft.com/aspnet/core/mvc/views
+[Accessed 20 September 2025].
+
+---
+
+## 📑 Unit Testing
+
+**Microsoft Learn.** 2024. *Unit testing controller logic in ASP.NET Core*, 17 July 2024. [Online].
+Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/testing 
+[Accessed 18 October 2025].
+
+**Microsoft Learn.** 2022. *In-memory database provider - EF Core*, 23 November 2022. [Online]. 
+Available at:https://learn.microsoft.com/en-us/ef/core/testing/in-memory 
+[Accessed 18 October 2025].
+
+**Sharma, M.** 2023. *Mastering Unit Testing in .NET 6: Build Reliable and Maintainable Applications with xUnit and MSTest. Packt Publishing*, 2023. [Online].
+Available at: https://www.packtpub.com/en-us/product/mastering-unit-testing-in-net-6-9781803241766
+[Accessed 18 October 2025].
+
+**Microsoft Learn.** 2022. *In-memory database provider - EF Core*, 23 November 2022. [Online]. 
+Available at: https://learn.microsoft.com/en-us/ef/core/testing/in-memory 
+[Accessed 18 October 2025].
+
+**Microsoft Learn.** 2024. *Unit testing controller logic in ASP.NET Core*, 17 July 2024. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/testing 
+[Accessed 18 October 2025].
+
+**MSDN.** 2025. *Unit testing in .NET with MSTest*, 27 March 2025. [Online]. 
+Available at: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest 
+[Accessed 18 October 2025].
+
+---
