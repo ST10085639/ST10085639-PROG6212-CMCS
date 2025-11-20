@@ -1,4 +1,9 @@
-﻿using iTextSharp.text;
+// Microsoft. 2022. ASP.NET MVC Controller Overview (C#), 11 July 2022. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs [Accessed 20 November 2025].
+// Microsoft. 2022. Understanding Models, Views, and Controllers (C#), 11 July 2022. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs [Accessed 20 November 2025].
+// Microsoft. 2025. Part 6, controller methods and views in ASP.NET Core, 2 March 2025. [Online]. Available at: https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/controller-methods-views?view=aspnetcore-9.0 [Accessed 20 November 2025]. 
+
+
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,9 +32,8 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return role == "HR";
         }
 
-        // ----------------------------
-        // HR DASHBOARD (formerly HRView)
-        // ----------------------------
+        
+        // HR DASHBOARD 
         public IActionResult HRView()
         {
             if (!IsHR())
@@ -42,9 +46,8 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return View("HRView",claims);
         }
 
-        // ----------------------------
+        
         // INVOICE VIEW
-        // ----------------------------
         public IActionResult Invoice(int id)
         {
             if (!IsHR())
@@ -57,9 +60,8 @@ namespace ST10085639_PROG6212_CMCS.Controllers
             return View(claim); // Loads Invoice.cshtml
         }
 
-        // ----------------------------
+        
         // DOWNLOAD INVOICE PDF
-        // ----------------------------
         public IActionResult DownloadInvoice(int id)
         {
             if (!IsHR())
